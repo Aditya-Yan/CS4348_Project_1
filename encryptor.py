@@ -61,3 +61,6 @@ for line in sys.stdin:
 
     elif command == "QUIT":
         break
+    else:
+        print("ERROR Invalid command")
+        sys.stdout.flush()

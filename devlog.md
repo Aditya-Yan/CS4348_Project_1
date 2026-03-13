@@ -75,3 +75,16 @@ Next I will add the DECRYPT and QUIT commands onto the if-elif chain.
 Implemented DECRYPT and QUIT commands.
 
 I initially made an error in the decryption formula by adding instead of subtracting the shift value. This is because I was implementing the same formula for the encryption and forgot to switch it the first time around. This produced incorrect output. After correcting the formula the cipher worked properly. Handling the command itself was the same so it was pretty simple. QUIT command simply just breaks so that was very simple to implement. I tested the same way I did for ENCRYPT and all tests were passed, including wraparounds. 
+
+## 03-13-26 1:35 AM
+
+### Session 4
+So I had a brain fart and realized that the RESULT and ERROR commands are not commands to be added to the if-elif chain and I already have them added as I was following the example on the docs. As such, my plan for this section is already completed from the prior code. I will just add error handling for an incorrect command and also label the first word with ERROR.
+
+### Plan
+- Just add an else statement if a command that does not exist is entered that outputs an error
+
+## 03-13-26 1:40 AM
+
+### Session Reflection
+I added the else statement if a command that does not exist is entered and tested it really quick with random words as the command. Everything is as expected.
