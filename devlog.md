@@ -59,3 +59,19 @@ The first commands to implement will be PASS and ENCRYPT.
 PASS and ENCRYPT commands were implemented.
 
 I initially only implemented code for the case where the key was the same length as the text. As such, I had to go back and fix this using a mod. I also realized that while testing, I initally forgot to add error handling if the key was not set yet. I assumed all input was provided in uppercase as stated in the project description. As for commands that are not in the list, I plan to add error handling for that after completing all commands for the encryptor program.
+
+## 03-13-26 1:20 AM
+
+### Session 3
+Next I will add the DECRYPT and QUIT commands onto the if-elif chain. 
+
+### Plan
+- For DECRYPT, just do whatever I did for ENCRYPT backwards. 
+- For QUIT, just break out of the for loop and terminate the program
+
+## 03-13-26 1:29 AM
+
+### Session Reflection
+Implemented DECRYPT and QUIT commands.
+
+I initially made an error in the decryption formula by adding instead of subtracting the shift value. This is because I was implementing the same formula for the encryption and forgot to switch it the first time around. This produced incorrect output. After correcting the formula the cipher worked properly. Handling the command itself was the same so it was pretty simple. QUIT command simply just breaks so that was very simple to implement. I tested the same way I did for ENCRYPT and all tests were passed, including wraparounds. 

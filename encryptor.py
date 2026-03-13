@@ -15,6 +15,17 @@ def vigenere_encrypt(text, key):
 
     return result
 
+def vigenere_decrypt(text, key):
+    result = ""
+    key_index = 0
+
+    for char in text:
+        shift = ord(key[key_index % len(key)]) - ord('A')
+        decrypted = chr(((ord(char) - ord('A') - shift) % 26) + ord('A'))
+        result += decrypted
+        key_index += 1
+
+    return result
 
 for line in sys.stdin:
     command_line = line.strip()
@@ -39,3 +50,14 @@ for line in sys.stdin:
             print(f"RESULT {encrypted}")
 
         sys.stdout.flush()
+    
+    elif command == "DECRYPT":
+        if passkey is None:
+            print("ERROR Password not set")
+        else:
+            decrypted = vigenere_decrypt(argument, passkey)
+            print(f"RESULT {decrypted}")
+        sys.stdout.flush()
+
+    elif command == "QUIT":
+        break
