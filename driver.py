@@ -119,6 +119,7 @@ def main():
             send_log(f"RESULT {response}")
 
         elif cmd == "encrypt":
+            history_len_before = len(history)
             text = get_string_from_user(
                 store_in_history=True,
                 prompt_text="Enter text: "
@@ -134,7 +135,7 @@ def main():
             if response.startswith("RESULT "):
                 encrypted_text = response.split(" ", 1)[1]
                 history.append(encrypted_text)
-            elif response.startswith("ERROR "):
+            elif response.startswith("ERROR ") and len(history) > history_len_before:
                 history.pop()
                 print("Encryption failed:", response.split(" ", 1)[1])
 
@@ -142,6 +143,7 @@ def main():
             send_log(f"RESULT {response}")
         
         elif cmd == "decrypt":
+            history_len_before = len(history)
             text = get_string_from_user(
                 store_in_history=True,
                 prompt_text="Enter text: "
@@ -155,9 +157,9 @@ def main():
             print(response)
 
             if response.startswith("RESULT "):
-                encrypted_text = response.split(" ", 1)[1]
-                history.append(encrypted_text)
-            elif response.startswith("ERROR "):
+                decrypted_text = response.split(" ", 1)[1]
+                history.append(decrypted_text)
+            elif response.startswith("ERROR ") and len(history) > history_len_before:
                 history.pop()
                 print("Decryption failed:", response.split(" ", 1)[1])
 
@@ -171,7 +173,8 @@ def main():
             send_log("QUIT Driver terminating")
             logger.stdin.write("QUIT\n")
             logger.stdin.flush()
-            send_encryptor_command("QUIT", "")
+            encryptor.stdin.write("QUIT\n")
+            encryptor.stdin.flush()
             encryptor.wait(timeout=2)
             logger.wait(timeout=2)
             break

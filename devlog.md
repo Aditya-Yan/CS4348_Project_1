@@ -157,3 +157,15 @@ I am changing my gameplan a little. I was able to implement decrypt and history 
 
 ### Session Reflection
 As mentioned before, I was able to easily implement decrypt and history commands using previously done code. For the quit command, I simply sent standard input to both logger and encryption programs saying "QUIT" and then waited so they could peacefully end their programs. I have also tested out these newly added commands by running through the menus and commands multiple times. Everything seems in order. I will do my final checkup and test tomorrow.
+
+## 03-13-26 12:25 PM
+
+### Session 7
+For my final session I just plan on reviewing my code and checking for any errors I might have missed. I plan on doing this by reinspecting my code and just cycling through the commands to see if I missed anything.
+
+## 03-13-26 12:52 PM
+
+### Session Reflection
+While there were not any errors I necessarily found from just running the code and cycling through the commands, I made some small fixes just in case from just reviewing my code. The first of which was not using my encryptor_send_message function to tell it to quit as that function waits on something to be returned, however, I don't return anythin for a quit command in the encryptor program. As such, I just changed it to a stdin. Finally, I just added a little bit of redundancy to make sure I don't accidently pop from my history when I didn't want to. The only time I would want to as I mentioned before is when an error comes back, so I just checked if the length increased before I pop from the history when an error is returned.
+
+Overall, the project seems to be working fine and I think I have accomplished all the criteria.
