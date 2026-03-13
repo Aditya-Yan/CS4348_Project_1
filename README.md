@@ -1,3 +1,8 @@
+# GITHUB LINK
+
+https://github.com/Aditya-Yan/CS4348_Project_1
+
+
 ## Overview
 
 This project implements a small system consisting of three separate programs that communicate using pipes. The system allows a user to encrypt and decrypt strings using a Vigenère cipher while logging all actions to a file.
