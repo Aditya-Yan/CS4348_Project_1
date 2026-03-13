@@ -39,7 +39,7 @@ for line in sys.stdin:
 
     if command == "PASS":
         passkey = argument
-        print("RESULT")
+        print("RESULT Password set")
         sys.stdout.flush()
 
     elif command == "ENCRYPT":

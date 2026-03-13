@@ -88,3 +88,47 @@ So I had a brain fart and realized that the RESULT and ERROR commands are not co
 
 ### Session Reflection
 I added the else statement if a command that does not exist is entered and tested it really quick with random words as the command. Everything is as expected.
+
+## 03-13-26 1:45 AM
+
+### Session 5
+The logger and encryption program are working fine, so I can now begin building the driver. This is the part of the project that ties everything together using subprocesses.
+
+I expect this session to be harder than the earlier ones because the driver has to manage user interaction while also communicating correctly with the logger and encryption programs.
+
+### Plan
+This session will focus on the password and encrypt commands for the driver program.
+
+- Start driver.py
+- Launch the logger process with the log filename argument
+- Launch the encryption program as a child process
+- Connect to both processes using pipes
+- Implement the password command
+- Implement the encrypt command
+- Store encrypted/decrypted strings in history
+- Make sure passwords are not stored in history
+- Make sure whatever happens is logged via the log process 
+- Test communication between driver and encryption program
+
+I will try to modularize as much as possible for clean code and ease of implementation.
+
+## 03-13-26 2:07 AM
+
+### Mid-Session Thought
+Modularizing this session would make the code much more readable and better. I am catching myself reusing the same code especially when sending input to the other two processes. I will go back now and redo the code more modularly.
+
+## 03-13-26 2:30 AM
+
+### Mid-Session Thought
+Error handling is being a big pain right now, I think before I continue coding I will write down all my test cases to figure out which errors need to be accounted for. Also, I am not sure if quick errors such as choosing an invalid index on the history selection shoul be logged or not. I think I will not log them as to make the log file less cluttered and will just reprompt the user in the terminal.
+
+## 03-13-26 2:45 AM
+
+### Session Reflection
+This was the hardest section to implement by far. I started off by creating a method to just write standard input to my logger file to be logged in the text file and a method to write standard input to the encryptor program to run its commands. Then for simplification, I created many functions to help me such as outputting a menu for the user to choose from the history or enter a new string. I made this function multiuse for password and encrypt by having a flag to see if the string and output should be stored to memory or not. I also created a quick function to view the history. Getting into the main function, I started off by creating my two subprocesses using the subprocess library as instructed. Then I sent the start driver message to the logger using the function mentioned before. 
+
+The biggest annoyances I had while coding this section was the error handling. I had to make sure the program did not break when an incorrect number was selected, when the history is empty, when an incorrect command is inputted. Another annoyance was forgetting to send messages to the log, so I had to go back many times to insert those commands. 
+
+Finally, I introduced a way to go back to the previous menu or prompt if needed so the entire code does not need to be restarted if the user changes their mind. Also, I did not make the history persistent between sessions as I was not sure if that was a part of the requirement.
+
+After doing all of this, my code works correctly and I tested it repeatedly by cycling through the commands. Everything is stored and logged as needed and the encryption is working correctly. With experience from this session, I hope to speed up the future sessions which should be similar to the code written in this one.
