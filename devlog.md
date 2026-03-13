@@ -138,3 +138,22 @@ After doing all of this, my code works correctly and I tested it repeatedly by c
 ### Session 5 Extended
 
 I realized that when an encryption is tried without a key being set, the string is still saved to history. Made a quick update to make sure it does not save if there is not key set.
+
+## 03-13-26 3:14 AM
+
+### Session 6
+Looking at the decrypt and history commands, it does not seem too complicated. I can reuse my code I used for encrypt with decrypt but just send a different command to the encryption program. For history, I just need to enumerate the array containing the history. I believe this session should not be too bad and should not take too long.
+
+### Plan
+- Reuse code used in encrypt command for decrypt command
+- Use enumerate to show history. I already have a function to show history so I can just use it
+
+## 03-13-26 3:20 AM
+
+### Mid-Session Thought
+I am changing my gameplan a little. I was able to implement decrypt and history very quickly and do not think quit will take long either. I will implement quit during this session. I plan on doing this by first shutting down the other two programs. I can send a QUIT command to the encrypot and logger as this was implemented in the previous sessions. Then I just use break to end the loop in the driver file and finish the driver process. I will then do final checkups tomorrow.
+
+## 03-13-26 3:28 AM
+
+### Session Reflection
+As mentioned before, I was able to easily implement decrypt and history commands using previously done code. For the quit command, I simply sent standard input to both logger and encryption programs saying "QUIT" and then waited so they could peacefully end their programs. I have also tested out these newly added commands by running through the menus and commands multiple times. Everything seems in order. I will do my final checkup and test tomorrow.

@@ -141,6 +141,41 @@ def main():
             send_log(f"ENCRYPT Request to encrypt string")
             send_log(f"RESULT {response}")
         
+        elif cmd == "decrypt":
+            text = get_string_from_user(
+                store_in_history=True,
+                prompt_text="Enter text: "
+            )
+
+            if text is None:
+                print("Decrypt command cancelled.")
+                continue
+
+            response = send_encryptor_command("DECRYPT", text)
+            print(response)
+
+            if response.startswith("RESULT "):
+                encrypted_text = response.split(" ", 1)[1]
+                history.append(encrypted_text)
+            elif response.startswith("ERROR "):
+                history.pop()
+                print("Decryption failed:", response.split(" ", 1)[1])
+
+            send_log(f"DECRYPT Request to decrypt string")
+            send_log(f"RESULT {response}")
+        
+        elif cmd == "history":
+            show_history()
+        
+        elif cmd == "quit":
+            send_log("QUIT Driver terminating")
+            logger.stdin.write("QUIT\n")
+            logger.stdin.flush()
+            send_encryptor_command("QUIT", "")
+            encryptor.wait(timeout=2)
+            logger.wait(timeout=2)
+            break
+        
         else:
             print("Unknown command entered. Please enter a valid command.")
 
