@@ -18,3 +18,19 @@ The project will be implemented in the following order:
 5. Implement password and encrypt commands in the driver
 6. Implement decrypt and history commands in the driver
 7. Implement quit functionality and final cleanup
+
+
+## 03-13-26 12:20 AM
+
+### Session 1
+Starting implementation with the logger program. The logger only needs to read messages from standard input and write them to a file with timestamps.
+
+### Plan
+Implement logger.py that:
+
+- Accepts log filename as command line argument
+- Reads log messages from stdin
+- Stops when receiving QUIT
+- Adds timestamps in required format
+- Use datetime module for the timestamps
+
