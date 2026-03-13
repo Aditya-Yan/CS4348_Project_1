@@ -40,3 +40,22 @@ Implement logger.py that:
 I succesfully implemented the logger program.
 
 Initially I forgot to flush the file after writing which caused some messages not to appear immediately. After I added log.flush() this issue was fixed. I also realized that splitting the message needed to handle cases where only the action was provided with no additional message. Finally, I made sure it would log when the quit command was given as well to make the log files clear. I repeatedly tested with normal standard input into a temporary text file. The logger now correctly timestamps entries and writes them in the required format.
+
+## 03-13-26 12:45 AM
+
+### Session 2
+Next I will begin implementing the encryption backend. This program will receive commands via stdin and output responses via stdout.
+
+The first commands to implement will be PASS and ENCRYPT.
+
+### Plan
+- Store passkey variable
+- Learn and then implement Vigenère encryption
+- Return RESULT or ERROR responses
+
+## 03-13-26 1:15 AM
+
+### Session Reflection
+PASS and ENCRYPT commands were implemented.
+
+I initially only implemented code for the case where the key was the same length as the text. As such, I had to go back and fix this using a mod. I also realized that while testing, I initally forgot to add error handling if the key was not set yet. I assumed all input was provided in uppercase as stated in the project description. As for commands that are not in the list, I plan to add error handling for that after completing all commands for the encryptor program.
