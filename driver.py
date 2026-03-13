@@ -134,6 +134,9 @@ def main():
             if response.startswith("RESULT "):
                 encrypted_text = response.split(" ", 1)[1]
                 history.append(encrypted_text)
+            elif response.startswith("ERROR "):
+                history.pop()
+                print("Encryption failed:", response.split(" ", 1)[1])
 
             send_log(f"ENCRYPT Request to encrypt string")
             send_log(f"RESULT {response}")

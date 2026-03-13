@@ -132,3 +132,9 @@ The biggest annoyances I had while coding this section was the error handling. I
 Finally, I introduced a way to go back to the previous menu or prompt if needed so the entire code does not need to be restarted if the user changes their mind. Also, I did not make the history persistent between sessions as I was not sure if that was a part of the requirement.
 
 After doing all of this, my code works correctly and I tested it repeatedly by cycling through the commands. Everything is stored and logged as needed and the encryption is working correctly. With experience from this session, I hope to speed up the future sessions which should be similar to the code written in this one.
+
+## 03-13-26 3:06 AM
+
+### Session 5 Extended
+
+I realized that when an encryption is tried without a key being set, the string is still saved to history. Made a quick update to make sure it does not save if there is not key set.
